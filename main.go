@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"github.com/stovak/go-composer/pkg/composer"
 )
 
 func main() {
@@ -14,7 +15,7 @@ func main() {
 		fmt.Printf("Could not read the file due to this %s error \n", err)
 	}
 	// convert the file binary into a string using string
-	fileContent := string(file)
+	fileContent := composer.ComposerFile(file)
 	// print file content
 	fmt.Println(fileContent)
 }
