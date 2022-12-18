@@ -1,0 +1,11 @@
+
+
+
+
+
+
+
+
+
+build:
+	go build .

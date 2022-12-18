@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/stovak/go-composer/pkg/composer"
+	"github.com/stovak/go-compose/pkg/composer"
 	"os"
 )
 

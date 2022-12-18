@@ -1,15 +1,30 @@
 package composer
 
 import (
-	"encoding/json"
 	"log"
 	"os"
+
+	"encoding/json"
 )
 
+type Author struct {
+	Name     string `mapstructure:"name"`
+	Email    string `mapstructure:"email"`
+	Homepage string `mapstructure:"homepage"`
+	Role     string `mapstructure:"role"`
+}
+
 type File struct {
-	Name        string `mapstructure:"name"`
-	Description string `mapstructure:"description"`
-	Version     string `mapstructure:"version"`
+	Name        string   `mapstructure:"name"`
+	Description string   `mapstructure:"description"`
+	Version     string   `mapstructure:"version"`
+	Type        string   `mapstructure:"type"`
+	Keywords    []string `mapstructure:"keywords"`
+	Homepage    string   `mapstrucutre:"homepage"`
+	Readme      string   `mapstructure:"readme"`
+	Time        string   `mapstructure:"time"`
+	License     string   `mapstructure:"license"`
+	Authors     []Author `mapstructure:"authors"`
 }
 
 func New(filename string) File {
@@ -18,7 +33,7 @@ func New(filename string) File {
 		log.Fatal("Error when opening file: ", err)
 	}
 
-	// Now let's unmarshall the data into `payload`
+	// Now let's unmarshal the data into `payload`
 	var payload File
 	err = json.Unmarshal(content, &payload)
 	if err != nil {

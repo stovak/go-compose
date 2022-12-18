@@ -3,6 +3,14 @@
   "description": "Install Drupal 9 with Composer on Pantheon.",
   "type": "project",
   "license": "MIT",
+  "keywords": ["test", "keywords", "for", "parser"],
+  "homepage": "https://pantheon.io",
+  "authors": [
+    {
+      "name": "Tom Stovall",
+      "email": "stovak@gmail.com"
+    }
+  ],
   "repositories": [
     {
       "type": "composer",
