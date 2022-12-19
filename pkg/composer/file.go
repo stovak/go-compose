@@ -14,17 +14,26 @@ type Author struct {
 	Role     string `mapstructure:"role"`
 }
 
+type FundingLink struct {
+	Type string `mapstructure:"type"`
+	Url  string `mapstructure:"url"`
+}
+
 type File struct {
-	Name        string   `mapstructure:"name"`
-	Description string   `mapstructure:"description"`
-	Version     string   `mapstructure:"version"`
-	Type        string   `mapstructure:"type"`
-	Keywords    []string `mapstructure:"keywords"`
-	Homepage    string   `mapstrucutre:"homepage"`
-	Readme      string   `mapstructure:"readme"`
-	Time        string   `mapstructure:"time"`
-	License     string   `mapstructure:"license"`
-	Authors     []Author `mapstructure:"authors"`
+	Name        string            `mapstructure:"name"`
+	Description string            `mapstructure:"description"`
+	Version     string            `mapstructure:"version"`
+	Type        string            `mapstructure:"type"`
+	Keywords    []string          `mapstructure:"keywords"`
+	Homepage    string            `mapstrucutre:"homepage"`
+	Readme      string            `mapstructure:"readme"`
+	Time        string            `mapstructure:"time"`
+	License     string            `mapstructure:"license"`
+	Authors     []Author          `mapstructure:"authors"`
+	Support     map[string]string `mapstructure:"support"`
+	Funding     []FundingLink     `mapstructure:"funding"`
+	Require     map[string]string `mapstucture:"require"`
+	RequireDev  map[string]string `mapstucture:"require-dev"`
 }
 
 func New(filename string) File {
@@ -39,8 +48,5 @@ func New(filename string) File {
 	if err != nil {
 		log.Fatal("Error during Unmarshal(): ", err)
 	}
-
-	// Let's print the unmarshalled data!
-	log.Printf("payload: %+v", payload)
 	return payload
 }
