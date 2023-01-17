@@ -1,15 +1,21 @@
+// Copyright © 2017 NAME HERE <EMAIL ADDRESS>
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package main
 
-import (
-	"fmt"
-	"github.com/stovak/go-compose/pkg/composer"
-	"os"
-)
+import "github.com/stovak/go-compose/cmd"
 
 func main() {
-	// get file from terminal
-	// read the whole content of file and pass it to file variable, in case of error pass it to err variable
-	parsedFile := composer.New(os.Args[1])
-	// print file content
-	fmt.Printf("Parsed: %+v", parsedFile)
+	cmd.Execute()
 }
