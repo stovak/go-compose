@@ -1,0 +1,17 @@
+run:
+  go: "1.18"
+  tests: false
+  skip-dirs:
+    - ./design
+    - ./gen
+  skip-dirs-use-default: false
+linters-settings:
+  govet:
+    check-shadowing: true
+
+linters:
+  enable-all: false
+  enable:
+  disable:
+    - typecheck # some issues with go modules
+    - megacheck

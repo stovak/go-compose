@@ -1,0 +1,36 @@
+version: "3"
+
+tasks:
+  clean:
+    desc: Clean the build
+    cmds:
+      - rm -rf ./bin
+      - rm -rf ./vendor
+      - rm -rf ./go-compose
+      - rm -rf ./go-compose.exe
+
+  test:
+    desc: Build the container image
+    deps:
+      - clean
+      - build
+    cmds:
+      - "./bin/go-compose parse ./tests/fixtures/composer_1.json"
+      - echo "Tests are on their way"
+
+  build:
+    desc: Build the container image
+    cmds:
+      - go build -o ./bin/go-compose .
+
+  lint:
+    desc: Lint the code
+    cmds:
+      - golangci-lint run -E goimports -v
+
+
+  format:
+    desc: Format the code
+    cmds:
+      - goimports -w .
+      - gofmt -w .

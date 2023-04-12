@@ -1,10 +1,9 @@
 package composer
 
 import (
+	"encoding/json"
 	"log"
 	"os"
-
-	"encoding/json"
 )
 
 type Author struct {
@@ -18,8 +17,6 @@ type FundingLink struct {
 	Type string `json:"type"`
 	Url  string `json:"url"`
 }
-
-type Repository struct{}
 
 type AutoloadSpec struct {
 	Psr4                map[string]string `json:"psr-4"`
@@ -52,6 +49,8 @@ type File struct {
 	IncludePath      []string `json:"include-path"`
 	TargetDir        string   `json:"target-dir"`
 
+	Repositories []Repository `json:"repositories"`
+
 	Require    map[string]string `json:"require"`
 	RequireDev map[string]string `json:"require-dev"`
 	Conflict   map[string]string `json:"conflict"`
@@ -78,7 +77,7 @@ func New(filename string) File {
 	var payload File
 	err = json.Unmarshal(content, &payload)
 	if err != nil {
-		log.Fatal("Error during Unmarshal(): ", err)
+		log.Fatal("Error during Decoding(): ", err)
 	}
 	return payload
 }

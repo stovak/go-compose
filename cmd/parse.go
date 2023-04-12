@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"fmt"
+	"github.com/gookit/goutil/dump"
 	"github.com/spf13/cobra"
 	"github.com/stovak/go-compose/pkg/composer"
 )
@@ -20,5 +20,7 @@ func init() {
 func runParse(cmd *cobra.Command, args []string) {
 	file := args[0]
 	parser := composer.New(file)
-	fmt.Printf("Parsed: %+v", parser.Require)
+	dump.Println(
+		parser,
+	)
 }

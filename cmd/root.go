@@ -40,6 +40,10 @@ func Execute() {
 
 func runRoot(cmd *cobra.Command, args []string) {
 	// get file from terminal
+	err := cmd.Help()
+	if err != nil {
+		return
+	}
 	os.Exit(0)
 	// read the whole content of file and pass it to file variable, in case of error pass it to err variable
 	//parsedFile := composer.New(file)
